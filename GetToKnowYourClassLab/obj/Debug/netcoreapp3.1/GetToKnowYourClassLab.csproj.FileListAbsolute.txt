@@ -1,0 +1,13 @@
+C:\Users\Winderps\source\repos\GetToKnowYourClassLab\GetToKnowYourClassLab\bin\Debug\netcoreapp3.1\GetToKnowYourClassLab.exe
+C:\Users\Winderps\source\repos\GetToKnowYourClassLab\GetToKnowYourClassLab\bin\Debug\netcoreapp3.1\GetToKnowYourClassLab.deps.json
+C:\Users\Winderps\source\repos\GetToKnowYourClassLab\GetToKnowYourClassLab\bin\Debug\netcoreapp3.1\GetToKnowYourClassLab.runtimeconfig.json
+C:\Users\Winderps\source\repos\GetToKnowYourClassLab\GetToKnowYourClassLab\bin\Debug\netcoreapp3.1\GetToKnowYourClassLab.runtimeconfig.dev.json
+C:\Users\Winderps\source\repos\GetToKnowYourClassLab\GetToKnowYourClassLab\bin\Debug\netcoreapp3.1\GetToKnowYourClassLab.dll
+C:\Users\Winderps\source\repos\GetToKnowYourClassLab\GetToKnowYourClassLab\bin\Debug\netcoreapp3.1\GetToKnowYourClassLab.pdb
+C:\Users\Winderps\source\repos\GetToKnowYourClassLab\GetToKnowYourClassLab\obj\Debug\netcoreapp3.1\GetToKnowYourClassLab.csprojAssemblyReference.cache
+C:\Users\Winderps\source\repos\GetToKnowYourClassLab\GetToKnowYourClassLab\obj\Debug\netcoreapp3.1\GetToKnowYourClassLab.csproj.CoreCompileInputs.cache
+C:\Users\Winderps\source\repos\GetToKnowYourClassLab\GetToKnowYourClassLab\obj\Debug\netcoreapp3.1\GetToKnowYourClassLab.AssemblyInfoInputs.cache
+C:\Users\Winderps\source\repos\GetToKnowYourClassLab\GetToKnowYourClassLab\obj\Debug\netcoreapp3.1\GetToKnowYourClassLab.AssemblyInfo.cs
+C:\Users\Winderps\source\repos\GetToKnowYourClassLab\GetToKnowYourClassLab\obj\Debug\netcoreapp3.1\GetToKnowYourClassLab.dll
+C:\Users\Winderps\source\repos\GetToKnowYourClassLab\GetToKnowYourClassLab\obj\Debug\netcoreapp3.1\GetToKnowYourClassLab.pdb
+C:\Users\Winderps\source\repos\GetToKnowYourClassLab\GetToKnowYourClassLab\obj\Debug\netcoreapp3.1\GetToKnowYourClassLab.genruntimeconfig.cache
