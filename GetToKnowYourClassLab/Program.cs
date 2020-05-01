@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.Cryptography;
 
@@ -39,74 +40,13 @@ namespace GetToKnowYourClassLab
             bool cont = true;
             while (cont)
             {
-                Console.Write($"Please enter the name or student number of someone you would like to look up (1-{ClassInfo.Length}): ");
-                string input = Console.ReadLine();
-                string[] studentInfo = null;
-                bool validInput = false;
-                while (!validInput)
-                {
-                    try
-                    {
-                        try
-                        {
-                            int studentId = int.Parse(input);
-                            studentInfo = GetStudentInfo(studentId-1);
-                            validInput = true;
-                        }
-                        catch (IndexOutOfRangeException)
-                        {
-                            Console.WriteLine("That student does not exist!");
-                        }
-                    }
-                    catch (FormatException)
-                    {
-                        string[][] possibleResults = GetStudentInfo(input);
-                        if (possibleResults.Equals(null))
-                        {
-                            Console.WriteLine("I couldn't find any students with that name");
-                        }
-                        else
-                        {
-                            if (possibleResults.Length > 1)
-                            {
-                                bool validInput2 = false;
-                                while (!validInput2)
-                                {
-                                    try
-                                    {
-                                        Console.WriteLine("Multiple matches found!");
-                                        for (int i = 0; i < possibleResults.Length; i++)
-                                        {
-                                            Console.WriteLine($"{i + 1}. {possibleResults[i][0]}");
-                                        }
-                                        Console.Write("Please enter the number of the student you want: ");
-                                        studentInfo = possibleResults[int.Parse(Console.ReadLine()) - 1];
-                                        validInput2 = true;
-                                    }
-                                    catch (IndexOutOfRangeException)
-                                    {
-                                        Console.WriteLine("That was too high of a number!");
-                                    }
-                                    catch (FormatException)
-                                    {
-                                        Console.WriteLine("That wasn't a number at all!");
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                studentInfo = possibleResults[0];
-                            }
-                            validInput = true;
-                        }
-                    }
-                }
+                string[] studentInfo = GetStudentInput();
                 bool validInput3 = false;
                 while (!validInput3)
                 {
                     Console.Write($"What information would you like on {studentInfo[0]}? Please enter hometown, food, band, or all: ");
 
-                    switch(Console.ReadLine().ToLower())
+                    switch (Console.ReadLine().ToLower())
                     {
                         case "hometown":
                             validInput3 = true;
@@ -135,20 +75,75 @@ namespace GetToKnowYourClassLab
             }
         }
 
+        private static string[] GetStudentInput()
+        {
+            while (true)
+            {
+                Console.Write($"Please enter the name or student number of someone you would like to look up (1-{ClassInfo.Length}): ");
+                string input = Console.ReadLine();
+                try
+                {
+                    int studentId = int.Parse(input);
+                    return GetStudentInfo(studentId - 1);
+                }
+                catch (FormatException)
+                {
+                    string[][] possibleResults = GetStudentInfo(input);
+                    if (possibleResults == null)
+                    {
+                        Console.WriteLine("I couldn't find any students with that name");
+                    }
+                    else
+                    {
+                        if (possibleResults.Length > 1)
+                        {
+                            return SelectPossibleMatch(possibleResults);
+                        }
+                        else
+                        {
+                            return possibleResults[0];
+                        }
+                    }
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    Console.WriteLine("That student does not exist!");
+                }
+            }
+        }
+
+        private static string[] SelectPossibleMatch(string[][] possibleResults)
+        {
+            while (true)
+            {
+                try
+                {
+                    Console.WriteLine("Multiple matches found!");
+                    for (int i = 0; i < possibleResults.Length; i++)
+                    {
+                        Console.WriteLine($"{i + 1}. {possibleResults[i][0]}");
+                    }
+                    Console.Write("Please enter the number of the student you want: ");
+                    return possibleResults[int.Parse(Console.ReadLine()) - 1];
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    Console.WriteLine("That was too high of a number!");
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("That wasn't a number at all!");
+                }
+            }
+        }
+
         static string[] GetStudentInfo(int id)
         {
             return ClassInfo[id];
         }
         static string[][] GetStudentInfo(string name)
         {
-            List<string[]> ret = new List<string[]>();
-            foreach(string[] student in ClassInfo)
-            {
-                if (student[0].ToLower().StartsWith(name))
-                {
-                    ret.Add(student);
-                }
-            }
+            List<string[]> ret = ClassInfo.Where(x => x[0].ToLower().Equals(name)).ToList();
             if (ret.Count == 0)
                 return null;
             return ret.ToArray();
